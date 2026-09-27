@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>問い合わせ詳細 | 社内問い合わせ管理</title>
+  <link rel="stylesheet" href="/style.css">
+  <script src="/app.js" defer></script>
+</head>
+<body>
+  <header class="brand">社内問い合わせ管理<span id="actor"></span></header>
+  <main>
+    <div class="heading"><h1 id="title">問い合わせ詳細</h1><a href="/?list=1" id="back">一覧に戻る</a></div>
+    <div id="message" role="status" aria-live="polite" hidden></div>
+    <div id="list" hidden></div>
+    <article id="detail" hidden>
+      <section aria-label="問い合わせ情報"><dl id="info"></dl></section>
+      <section id="status-section">
+        <h2>ステータス変更</h2>
+        <p>現在： <span id="current-status" class="badge"></span></p>
+        <form id="status-form">
+          <fieldset><legend>変更先</legend><div id="status-options"></div></fieldset>
+          <label for="comment">コメント（任意・200字以内）</label>
+          <textarea id="comment" rows="3" aria-describedby="comment-count"></textarea>
+          <span id="comment-count" class="hint">0 / 200文字</span>
+          <div class="actions"><button type="submit">ステータスを変更</button></div>
+        </form>
+      </section>
+      <section id="assignee-section">
+        <h2>担当者割り当て</h2>
+        <p>現在： <span id="current-assignee"></span></p>
+        <form id="assignee-form">
+          <label for="assignee">変更先</label>
+          <select id="assignee"></select>
+          <p id="assignee-notice" class="hint" hidden>担当者の変更は管理者に依頼してください</p>
+          <div class="actions"><button type="submit" id="assignee-button">担当者を変更</button></div>
+        </form>
+      </section>
+      <section><h2>変更履歴 <small>新しい順・最大20件</small></h2><div id="history"></div></section>
+    </article>
+  </main>
+</body>
+</html>
